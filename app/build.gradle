@@ -34,4 +34,5 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.16.20'
 
     compile 'com.nightonke:boommenu:2.1.1'
+    compile 'com.android.support:cardview-v7:23.3.+'
 }
