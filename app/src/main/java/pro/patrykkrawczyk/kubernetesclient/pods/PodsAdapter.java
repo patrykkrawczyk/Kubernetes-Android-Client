@@ -49,9 +49,9 @@ public final class PodsAdapter extends RecyclerView.Adapter<PodsAdapter.ViewHold
 
         List<Container> containers = pod.getSpec().getContainers();
         if (containers.size() > 0) {
-            holder.owner.setText(containers.get(0).getName());
+            holder.container.setText(containers.get(0).getName());
         } else {
-            holder.owner.setText("");
+            holder.container.setText("");
         }
 
         List<OwnerReference> ownerReferences = pod.getMetadata().getOwnerReferences();
