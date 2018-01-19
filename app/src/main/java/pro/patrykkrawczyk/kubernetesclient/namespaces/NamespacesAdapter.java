@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.fabric8.kubernetes.api.model.Namespace;
 import java.util.ArrayList;
@@ -33,6 +35,11 @@ public final class NamespacesAdapter extends RecyclerView.Adapter<NamespacesAdap
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Namespace namespace = dataSet.get(position);
+
+        holder.name.setText(namespace.getMetadata().getName());
+        holder.version.setText(namespace.getMetadata().getResourceVersion());
+        holder.created.setText(namespace.getMetadata().getCreationTimestamp());
+        holder.status.setText(namespace.getStatus().getPhase());
     }
 
     @Override
@@ -41,6 +48,18 @@ public final class NamespacesAdapter extends RecyclerView.Adapter<NamespacesAdap
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.name)
+        TextView name;
+
+        @BindView(R.id.version)
+        TextView version;
+
+        @BindView(R.id.created)
+        TextView created;
+
+        @BindView(R.id.status)
+        TextView status;
 
         ViewHolder(View view) {
             super(view);
